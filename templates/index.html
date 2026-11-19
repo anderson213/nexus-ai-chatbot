@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nexus AI — seu assistente inteligente para ideias, estudos e criação.">
+  <title>Nexus AI — Assistente Inteligente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark"><span></span><span></span><span></span></div>
+        <span>NEXUS<span class="brand-ai"> AI</span></span>
+      </div>
+      <button class="new-chat" id="newChat"><span>＋</span> Nova conversa</button>
+      <div class="side-label">ESPAÇO DE TRABALHO</div>
+      <div class="side-link active"><span class="side-icon">◈</span> Assistente</div>
+      <div class="side-link"><span class="side-icon">⌘</span> Explorar ideias</div>
+      <div class="sidebar-bottom">
+        <div class="status-card">
+          <div class="status-line"><span class="status-dot" id="statusDot"></span><span id="statusText" role="status">Verificando configuração...</span></div>
+          <p>Configuração do serviço de IA</p>
+        </div>
+        <div class="profile">
+          <div class="avatar">N</div>
+          <div><strong>Nexus AI</strong><small>Assistente virtual</small></div>
+          <span class="profile-more">•••</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong>Assistente</strong></div>
+      </header>
+
+      <section class="chat-area">
+        <div class="welcome" id="welcome">
+          <div class="welcome-orb"><div class="orb-core"></div><div class="orb-ring ring-one"></div><div class="orb-ring ring-two"></div></div>
+          <div class="eyebrow"><span></span> INTELIGÊNCIA ARTIFICIAL CONVERSACIONAL</div>
+          <h1>Ideias melhores.<br><em>Possibilidades infinitas.</em></h1>
+          <p class="welcome-copy">Olá! Eu sou o Nexus, seu assistente inteligente.<br>O que vamos descobrir hoje?</p>
+          <div class="suggestions">
+            <button class="suggestion" data-prompt="Explique como funciona a inteligência artificial de forma simples."><span>✳</span><b>Aprender algo novo</b><small>Entenda assuntos complexos</small><i>↗</i></button>
+            <button class="suggestion" data-prompt="Ajude-me a organizar um plano de estudos para esta semana."><span>▤</span><b>Organizar meus estudos</b><small>Crie um plano de estudos</small><i>↗</i></button>
+            <button class="suggestion" data-prompt="Dê cinco ideias criativas para um projeto de tecnologia escolar."><span>⌘</span><b>Explorar ideias</b><small>Encontre novas possibilidades</small><i>↗</i></button>
+          </div>
+        </div>
+
+        <div class="messages" id="messages" role="log" aria-label="Conversa"></div>
+        <div class="composer-wrap">
+          <form class="composer" id="chatForm" data-chat-url="{{ url_for('chat') }}" data-status-url="{{ url_for('status') }}">
+            <textarea id="messageInput" rows="1" maxlength="4000" placeholder="Envie uma mensagem para o Nexus..." aria-label="Sua mensagem"></textarea>
+            <div class="composer-footer">
+              <span class="composer-hint"><span>↵</span> para enviar · Shift + ↵ para nova linha</span>
+              <button class="send-button" id="sendButton" type="submit" aria-label="Enviar mensagem"><span>↑</span></button>
+            </div>
+          </form>
+          <p class="disclaimer">As mensagens são enviadas ao Gemini. Evite dados sensíveis e verifique informações importantes.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+.app-shell {
+  height: 100dvh;
+  min-height: 0;
+}
+.topbar {
+  flex-shrink: 0;
+}
+.chat-area {
+  min-height: 0;
+}
+.welcome {
+  min-height: 0;
+  overflow-y: auto;
+}
+.messages {
+  min-height: 0;
+}
+.composer-wrap {
+  flex-shrink: 0;
+}
+.typing-status {
+  color: var(--muted);
+  font-size: 12px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .messages {
+    scroll-behavior: auto;
+  }
+  .typing span {
+    animation: none;
+  }
+}
